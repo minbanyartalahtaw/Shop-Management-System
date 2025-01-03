@@ -179,7 +179,15 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                             </TableCell>
                             {Array.isArray(values) &&
                               values.map((value, index) => (
-                                <TableCell key={index} align="right">
+                                <TableCell
+                                  key={index}
+                                  align="right"
+                                  style={{
+                                    color:
+                                      value === 0 || value === ""
+                                        ? "grey"
+                                        : "inherit",
+                                  }}>
                                   {value}
                                 </TableCell>
                               ))}
@@ -196,7 +204,7 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
               onClick={toggleExpand}
               startIcon={isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
               sx={{ mt: 2 }}>
-              {isExpanded ? "Hide Details" : "Show More Details"}
+              {isExpanded ? "ပိတ်ရန်" : "အသေးစိတ်ကြည့်ရန်"}
             </Button>
           </CardContent>
 
@@ -209,10 +217,27 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                 <Typography>{formatCurrency(data.reject_Amount)}</Typography>
               </Box>
               <Box textAlign="right">
-                <Typography variant="body2" color="text.secondary">
-                  လက်ကျန်ငွေ
+                <Typography
+                  variant="body2"
+                  color={
+                    Number(data.total_Amount) - Number(data.reject_Amount) === 0
+                      ? "text.secondary"
+                      : "error"
+                  }>
+                  ကျန်ငွေ
                 </Typography>
-                <Typography>{formatCurrency(data.remaining_Amount)}</Typography>
+                <Typography
+                  color={
+                    Number(data.total_Amount) - Number(data.reject_Amount) === 0
+                      ? "text.secondary"
+                      : "error"
+                  }>
+                  {formatCurrency(
+                    (
+                      Number(data.total_Amount) - Number(data.reject_Amount)
+                    ).toString()
+                  )}
+                </Typography>
               </Box>
             </Box>
           </Box>
