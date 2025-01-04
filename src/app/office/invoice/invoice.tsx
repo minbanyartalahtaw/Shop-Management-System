@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { FormDataInterface } from "@/app/form/form";
 import InvoiceCard from "./invoice2";
 import React from "react";
+import { createInvoice } from "./action";
 
 export default function Invoice() {
   const defaultForm: FormDataInterface = {
@@ -39,8 +40,17 @@ export default function Invoice() {
   const [formData, setFormData] = React.useState(defaultForm);
   const id = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   formData.invoice_Number = id;
+  const checkInvoice = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      alert("Invoice Created Successfully");
+      setFormData(defaultForm);
+    }, 1000);
+  };
   return (
     <Box
+      component={"form"}
+      action={createInvoice}
       sx={{
         width: "95%",
         display: "flex",
@@ -89,6 +99,7 @@ export default function Invoice() {
                 onChange={(e) =>
                   setFormData({ ...formData, customer_Name: e.target.value })
                 }
+                name="customer_Name"
               />
             </Grid>
             <Grid item xs={12} sm={3}>
@@ -101,6 +112,7 @@ export default function Invoice() {
                 onChange={(e) =>
                   setFormData({ ...formData, mobile_Number: e.target.value })
                 }
+                name="mobile_Number"
               />
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -112,6 +124,7 @@ export default function Invoice() {
                 onChange={(e) =>
                   setFormData({ ...formData, address: e.target.value })
                 }
+                name="address"
               />
             </Grid>
             <Grid item xs={12} sm={2}>
@@ -123,6 +136,7 @@ export default function Invoice() {
                 InputProps={{
                   readOnly: true,
                 }}
+                name="purchase_date"
               />
             </Grid>
           </Grid>
@@ -145,6 +159,7 @@ export default function Invoice() {
                     },
                   })
                 }
+                name="product_Name"
               />
             </Grid>
             <Grid item xs={12} md={1}>
@@ -184,6 +199,13 @@ export default function Invoice() {
                               : "purity_14"]: e.target.value,
                           },
                         })
+                      }
+                      name={
+                        label === "၁၆ ပဲရည်"
+                          ? "purity_16"
+                          : label === "၁၅ ပဲရည်"
+                          ? "purity_15"
+                          : "purity_14"
                       }
                     />
                   </Grid>
@@ -238,6 +260,7 @@ export default function Invoice() {
                           },
                         });
                       }}
+                      name={`ပေးရွှေချိန်-${index + 1}`}
                     />
                   </Grid>
                 ))}
@@ -273,6 +296,7 @@ export default function Invoice() {
                           },
                         });
                       }}
+                      name={`စိုက်ရွှေချိန်-${index + 1}`}
                     />
                   </Grid>
                 ))}
@@ -308,6 +332,7 @@ export default function Invoice() {
                           },
                         });
                       }}
+                      name={`ရွှေအလေးချိန်-${index + 1}`}
                     />
                   </Grid>
                 ))}
@@ -343,6 +368,7 @@ export default function Invoice() {
                           },
                         });
                       }}
+                      name={`အလျော့တွက်-${index + 1}`}
                     />
                   </Grid>
                 ))}
@@ -378,6 +404,7 @@ export default function Invoice() {
                           },
                         });
                       }}
+                      name={`ကျောက်ချိန်-${index + 1}`}
                     />
                   </Grid>
                 ))}
@@ -413,6 +440,7 @@ export default function Invoice() {
                           },
                         });
                       }}
+                      name={`ရွှေ+ကျောက်ချိန်-${index + 1}`}
                     />
                   </Grid>
                 ))}
@@ -436,6 +464,7 @@ export default function Invoice() {
                     },
                   })
                 }
+                name="handWidth"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -453,6 +482,7 @@ export default function Invoice() {
                     },
                   })
                 }
+                name="length"
               />
             </Grid>
           </Grid>
@@ -475,6 +505,7 @@ export default function Invoice() {
                     total_Amount: e.target.value,
                   })
                 }
+                name="total_Amount"
               />
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -494,6 +525,7 @@ export default function Invoice() {
                     reject_Amount: e.target.value,
                   })
                 }
+                name="reject_Amount"
               />
             </Grid>
             <Grid item xs={12} sm={4}>
@@ -517,6 +549,7 @@ export default function Invoice() {
                     ).toString(),
                   })
                 }
+                name="remaining_Amount"
               />
             </Grid>
           </Grid>
@@ -538,6 +571,7 @@ export default function Invoice() {
                     appointment_Date: e.target.value,
                   })
                 }
+                name="appointment_Date"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -549,6 +583,7 @@ export default function Invoice() {
                 onChange={(e) =>
                   setFormData({ ...formData, signature: e.target.value })
                 }
+                name="signature"
               />
             </Grid>
           </Grid>
@@ -562,7 +597,6 @@ export default function Invoice() {
                   alignItems: "center",
                 }}>
                 <Button
-                  type="submit"
                   variant="contained"
                   color="primary"
                   size="large"
@@ -571,6 +605,8 @@ export default function Invoice() {
                       return alert("အမည်ထည့်ပါ");
                     if (formData.product_Details.product_Name === "")
                       return alert("ပစ္စည်းအမျိုးအစားထည့်ပါ။");
+                    if (formData.signature === "")
+                      return alert("လက်မှတ်ထည့်ပါ");
                     const element = document.getElementById(id);
                     if (element) {
                       element.scrollIntoView({ behavior: "smooth" });
@@ -583,6 +619,7 @@ export default function Invoice() {
               <TextField
                 value={formData.invoice_Number}
                 sx={{ display: "none" }}
+                name="invoice_Number"
               />
             </Grid>
           </Grid>
@@ -599,6 +636,16 @@ export default function Invoice() {
           height: "100vh",
         }}>
         <InvoiceCard data={formData} />
+
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          size="large"
+          sx={{ float: "right" }}
+          onClick={checkInvoice}>
+          ဘောက်ချာသိမ်းရန်
+        </Button>
       </Box>
     </Box>
   );

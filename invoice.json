@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "customer_Name": "John Doe",
+    "mobile_Number": "0912345678",
+    "address": "Yangon Insein",
+    "purchase_date": "2025-01-04",
+    "product_Details": {
+      "product_Name": "စိန်ဆွဲကြိုး",
+      "purity_16": "3500000",
+      "purity_15": "",
+      "purity_14": "",
+      "weight": {
+        "row1": [0, 0, 0, 0],
+        "row2": [0, 0, 0, 0],
+        "row3": [2, 1, 3, 1],
+        "row4": [0, 0, 0, 0],
+        "row5": [0, 0, 0, 0],
+        "row6": [0, 0, 0, 0]
+      },
+      "handWidth": "18",
+      "length": "18"
+    },
+    "total_Amount": "500000",
+    "reject_Amount": "25000",
+    "remaining_Amount": "475000",
+    "appointment_Date": "2025-01-24",
+    "invoice_Number": "1735956277295-8rtw8p4zr",
+    "signature": "101101"
+  },
+  {
+    "id": 2,
+    "customer_Name": "",
+    "mobile_Number": "",
+    "address": "",
+    "purchase_date": "2025-01-04",
+    "product_Details": {
+      "product_Name": "",
+      "purity_16": "",
+      "purity_15": "",
+      "purity_14": "",
+      "weight": {
+        "row1": [0, 0, 0, 0],
+        "row2": [0, 0, 0, 0],
+        "row3": [0, 0, 0, 0],
+        "row4": [0, 0, 0, 0],
+        "row5": [0, 0, 0, 0],
+        "row6": [0, 0, 0, 0]
+      },
+      "handWidth": "",
+      "length": ""
+    },
+    "total_Amount": "",
+    "reject_Amount": "",
+    "remaining_Amount": "0",
+    "appointment_Date": "",
+    "invoice_Number": "1735956284836-ah6drffbz",
+    "signature": ""
+  }
+]

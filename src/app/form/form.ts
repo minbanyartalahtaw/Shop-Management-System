@@ -1,10 +1,10 @@
 export interface weight_Details {
-  row1: number[];
-  row2: number[];
-  row3: number[];
-  row4: number[];
-  row5: number[];
-  row6: number[];
+  row1: number[]; // ပေးရွှေချိန်
+  row2: number[]; // စိုက်ရွှေချိန်
+  row3: number[]; // ရွှေအလေးချိန်
+  row4: number[]; // အလျော့တွက်
+  row5: number[]; // ကျောက်ချိန်
+  row6: number[]; // ရွှေ+ကျောက် ချိန်
 }
 
 export interface ProductDetails {
