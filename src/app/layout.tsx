@@ -36,7 +36,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${notoSans.variable} ${geistMono.variable}`}>
-        <Box sx={{ display: "flex" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+          }}>
           <Sidebar
             open={sidebarOpen}
             onClose={handleSidebarClose}

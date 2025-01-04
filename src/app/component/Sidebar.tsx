@@ -21,6 +21,7 @@ import {
   Logout as LogoutIcon,
   Menu as MenuIcon,
 } from "@mui/icons-material";
+import SourceIcon from "@mui/icons-material/Source";
 import { useRouter } from "next/navigation";
 
 // Create a theme with a single primary color
@@ -41,6 +42,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ open, onClose, onOpen }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const router = useRouter();
 
   useEffect(() => {
@@ -54,7 +56,16 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose, onOpen }) => {
 
   const menuItems = [
     { text: "Dashboard", icon: <DashboardIcon />, path: "/office/dashboard" },
-    { text: "Invoice", icon: <InvoiceIcon />, path: "/office/invoice" },
+    {
+      text: "Invoice",
+      icon: <InvoiceIcon />,
+      path: "/office/invoice/add-invoice",
+    },
+    {
+      text: "ဘောက်ချာများ",
+      icon: <SourceIcon />,
+      path: "/office/invoice/",
+    },
     { text: "Customer", icon: <CustomerIcon />, path: "/office/customer" },
     { text: "Order", icon: <OrderIcon />, path: "/office/order" },
     { text: "Settings", icon: <SettingIcon />, path: "/office/setting" },
@@ -122,7 +133,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose, onOpen }) => {
             key={item.text}
             onClick={() => {
               router.push(item.path);
-              if (isMobile) {
+              if (isMobile || isTablet) {
                 onClose();
               }
             }}
@@ -212,7 +223,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose, onOpen }) => {
         <MenuIcon sx={{ color: "#669bbc" }} />
       </IconButton>
       <Drawer
-        variant={isMobile ? "temporary" : "permanent"}
+        variant={isTablet ? "temporary" : "permanent"}
         open={open}
         onClose={onClose}
         ModalProps={{

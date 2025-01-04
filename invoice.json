@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "customer_Name": "John Doe",
+    "customer_Name": "မင်းဗညားတလထော",
     "mobile_Number": "0912345678",
     "address": "Yangon Insein",
     "purchase_date": "2025-01-04",
@@ -30,31 +30,31 @@
   },
   {
     "id": 2,
-    "customer_Name": "",
-    "mobile_Number": "",
-    "address": "",
+    "customer_Name": "Mg Mg",
+    "mobile_Number": "0973358130",
+    "address": "Yangon Insein",
     "purchase_date": "2025-01-04",
     "product_Details": {
-      "product_Name": "",
-      "purity_16": "",
+      "product_Name": "Gold Ring ",
+      "purity_16": "3200000",
       "purity_15": "",
       "purity_14": "",
       "weight": {
-        "row1": [0, 0, 0, 0],
-        "row2": [0, 0, 0, 0],
-        "row3": [0, 0, 0, 0],
-        "row4": [0, 0, 0, 0],
-        "row5": [0, 0, 0, 0],
+        "row1": [0, 0, 0, 1],
+        "row2": [0, 0, 0, 1],
+        "row3": [1, 1, 1, 1],
+        "row4": [0, 0, 0, 1],
+        "row5": [0, 0, 0, 1],
         "row6": [0, 0, 0, 0]
       },
-      "handWidth": "",
-      "length": ""
+      "handWidth": "12",
+      "length": "14"
     },
-    "total_Amount": "",
-    "reject_Amount": "",
-    "remaining_Amount": "0",
-    "appointment_Date": "",
-    "invoice_Number": "1735956284836-ah6drffbz",
-    "signature": ""
+    "total_Amount": "550000",
+    "reject_Amount": "40000",
+    "remaining_Amount": "510000",
+    "appointment_Date": "2025-01-31",
+    "invoice_Number": "1735969506454-r5sc4bkdl",
+    "signature": "101101"
   }
 ]
