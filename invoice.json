@@ -30,8 +30,8 @@
   },
   {
     "id": 2,
-    "customer_Name": "Mg Mg",
-    "mobile_Number": "0973358130",
+    "customer_Name": "ထောထော",
+    "mobile_Number": "09777444522",
     "address": "Yangon Insein",
     "purchase_date": "2025-01-04",
     "product_Details": {
@@ -53,8 +53,37 @@
     "total_Amount": "550000",
     "reject_Amount": "40000",
     "remaining_Amount": "510000",
-    "appointment_Date": "2025-01-31",
+    "appointment_Date": "2023-01-31",
     "invoice_Number": "1735969506454-r5sc4bkdl",
+    "signature": "101101"
+  },
+  {
+    "id": 3,
+    "customer_Name": "မောင်ဘ",
+    "mobile_Number": "0968267538",
+    "address": "ရန်ကုန်",
+    "purchase_date": "2025-01-04",
+    "product_Details": {
+      "product_Name": "မောင်းကွင်းပြောင်",
+      "purity_16": "6100000",
+      "purity_15": "",
+      "purity_14": "",
+      "weight": {
+        "row1": [0, 0, 0, 0],
+        "row2": [0, 0, 0, 0],
+        "row3": [0, 1, 4, 1],
+        "row4": [0, 0, 3, 1],
+        "row5": [0, 0, 0, 0],
+        "row6": [0, 0, 0, 0]
+      },
+      "handWidth": "",
+      "length": ""
+    },
+    "total_Amount": "600000",
+    "reject_Amount": "450000",
+    "remaining_Amount": "150000",
+    "appointment_Date": "2025-01-04",
+    "invoice_Number": "1736001217799-voh3dikhv",
     "signature": "101101"
   }
 ]

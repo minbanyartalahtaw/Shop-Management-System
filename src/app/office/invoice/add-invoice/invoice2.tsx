@@ -22,6 +22,11 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { FormDataInterface } from "@/app/form/form";
 
+const getWidth = () =>
+  window.innerWidth ||
+  document.documentElement.clientWidth ||
+  document.body.clientWidth;
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -31,9 +36,14 @@ const theme = createTheme({
       main: "#1976d2",
     },
   },
+  typography: {
+    fontSize: getWidth() > 1300 ? 16 : 12,
+  },
 });
 
 const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
+  console.log(getWidth());
+
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
@@ -53,7 +63,6 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
         transition={{ duration: 0.5 }}>
         <Card
           sx={{
-            width: { xs: "80vw", sm: "50vw" },
             mx: "auto",
             my: 4,
             overflow: "hidden",
@@ -61,17 +70,25 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
           <Box
             sx={{
               p: 3,
-              background: "white",
+              background: "#f44336",
               color: "white",
               display: "flex",
               justifyContent: "space-between",
             }}>
-            <Typography variant="h4" fontWeight="bold" color="primary">
+            <Typography
+              variant="h4"
+              fontWeight="bold"
+              sx={{
+                backgroundImage:
+                  "linear-gradient(to top,rgb(219, 219, 219),rgb(255, 255, 255))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}>
               {data.invoice_Number.slice(14)}
             </Typography>
             <Button
-              variant="contained"
-              color="error"
+              variant="outlined"
+              color="inherit"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               ပြင်ရန်
             </Button>
@@ -80,65 +97,22 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
           <CardContent>
             <Box display="flex" justifyContent="space-between" mb={2}>
               <Box>
-                <Typography variant="h6">{data.customer_Name}</Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="h5" gutterBottom>
+                  {data.customer_Name}
+                </Typography>
+                <Typography variant="body2" gutterBottom color="primary">
+                  {data.purchase_date}
+                </Typography>
+                <Typography variant="body2" color="text.secondary" gutterBottom>
                   {data.mobile_Number}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   {data.address}
                 </Typography>
               </Box>
-              <Box textAlign="right">
-                <Typography variant="h6" color="primary">
-                  {formatCurrency(data.total_Amount)}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  တန်ဖိုး
-                </Typography>
-              </Box>
             </Box>
 
             <Divider sx={{ my: 2 }} />
-
-            <Typography variant="h5" gutterBottom mb={3}>
-              ပစ္စည်းအသေးစိတ်
-            </Typography>
-            <Typography variant="body2" mb={1}>
-              <strong>အမျိုးအစား - </strong> {data.product_Details.product_Name}
-            </Typography>
-            <Typography variant="body2" mb={1}>
-              <strong>ရွှေစျေး - </strong>{" "}
-              {data.product_Details.purity_16
-                ? "16K"
-                : data.product_Details.purity_15
-                ? "15K"
-                : "14K"}
-            </Typography>
-            {data.product_Details.handWidth && (
-              <Typography variant="body2" mb={1}>
-                <strong>လက်တိုင်း - </strong> {data.product_Details.handWidth}
-              </Typography>
-            )}
-            {data.product_Details.length &&
-              Number(data.product_Details.length) > 0 && (
-                <Typography variant="body2" mb={1}>
-                  <strong>ကြိုးအရှည် - </strong> {data.product_Details.length}
-                </Typography>
-              )}
-            {data.appointment_Date &&
-              Number(data.appointment_Date.length) > 0 && (
-                <Typography
-                  variant="body2"
-                  mb={1}
-                  style={{
-                    color:
-                      new Date(data.appointment_Date) < new Date()
-                        ? "green"
-                        : "red",
-                  }}>
-                  <strong>ရက်ချိန်း - </strong> {data.appointment_Date}
-                </Typography>
-              )}
 
             <motion.div
               initial={false}
@@ -146,6 +120,84 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
               transition={{ duration: 0.3 }}
               style={{ overflow: "hidden" }}>
               <Box mt={2}>
+                <Typography variant="h5" gutterBottom mb={3}>
+                  ပစ္စည်းအသေးစိတ်
+                </Typography>
+                <Box bgcolor={"grey.100"} p={2} mb={2}>
+                  <Typography variant="body2" mb={1}>
+                    <strong>အမျိုးအစား - </strong>{" "}
+                    {data.product_Details.product_Name}
+                  </Typography>
+                  <Typography variant="body2" mb={1}>
+                    <strong>ရွှေစျေး - </strong>{" "}
+                    {data.product_Details.purity_16
+                      ? "16K"
+                      : data.product_Details.purity_15
+                      ? "15K"
+                      : "14K"}
+                  </Typography>
+                  {data.product_Details.handWidth && (
+                    <Typography variant="body2" mb={1}>
+                      <strong>လက်တိုင်း - </strong>{" "}
+                      {data.product_Details.handWidth}
+                    </Typography>
+                  )}
+                  {data.product_Details.length &&
+                    Number(data.product_Details.length) > 0 && (
+                      <Typography variant="body2" mb={1}>
+                        <strong>ကြိုးအရှည် - </strong>{" "}
+                        {data.product_Details.length}
+                      </Typography>
+                    )}
+                </Box>
+
+                {/* Remaining amount and Rejected Amount */}
+                <Box bgcolor={"grey.100"} p={2} mb={2}>
+                  <Box>
+                    <Typography variant="body2" color="text.secondary">
+                      စရန်ငွေ - {formatCurrency(data.reject_Amount)}
+                    </Typography>
+                  </Box>
+                  <Box display={"flex"}>
+                    <Typography
+                      variant="body2"
+                      color={
+                        Number(data.total_Amount) -
+                          Number(data.reject_Amount) ===
+                        0
+                          ? "text.secondary"
+                          : "error"
+                      }>
+                      ကျန်ငွေ -
+                      {formatCurrency(
+                        (
+                          Number(data.total_Amount) - Number(data.reject_Amount)
+                        ).toString()
+                      )}
+                    </Typography>
+                  </Box>
+                </Box>
+                {data.appointment_Date &&
+                  Number(data.appointment_Date.length) > 0 && (
+                    <Typography
+                      mt={2}
+                      bgcolor={
+                        new Date(data.appointment_Date) < new Date()
+                          ? "green"
+                          : "red"
+                      }
+                      variant="body2"
+                      mb={1}
+                      style={{
+                        textAlign: "center",
+                        padding: "5px",
+                        color: "white",
+                        borderRadius: "5px",
+                      }}>
+                      <strong>ရက်ချိန်း - </strong> {data.appointment_Date}
+                    </Typography>
+                  )}
+
                 <Typography variant="h6" gutterBottom>
                   ပစ္စည်းအလေးချိန်
                 </Typography>
@@ -209,34 +261,13 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
           </CardContent>
 
           <Box sx={{ bgcolor: "grey.100", px: 3, py: 2 }}>
-            <Box display="flex" justifyContent="space-between">
-              <Box>
-                <Typography variant="body2" color="text.secondary">
-                  စရန်ငွေ
-                </Typography>
-                <Typography>{formatCurrency(data.reject_Amount)}</Typography>
-              </Box>
+            <Box>
               <Box textAlign="right">
-                <Typography
-                  variant="body2"
-                  color={
-                    Number(data.total_Amount) - Number(data.reject_Amount) === 0
-                      ? "text.secondary"
-                      : "error"
-                  }>
-                  ကျန်ငွေ
+                <Typography variant="h6" color="primary">
+                  {formatCurrency(data.total_Amount)}
                 </Typography>
-                <Typography
-                  color={
-                    Number(data.total_Amount) - Number(data.reject_Amount) === 0
-                      ? "text.secondary"
-                      : "error"
-                  }>
-                  {formatCurrency(
-                    (
-                      Number(data.total_Amount) - Number(data.reject_Amount)
-                    ).toString()
-                  )}
+                <Typography variant="body2" color="text.secondary">
+                  တန်ဖိုး
                 </Typography>
               </Box>
             </Box>

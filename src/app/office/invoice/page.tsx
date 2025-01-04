@@ -3,37 +3,11 @@ import { Box, Button, Grid } from "@mui/material";
 import InvoiceCard from "./invoiceCard";
 import { FormDataInterface } from "@/app/form/form";
 import { redirect } from "next/navigation";
+import { getInvoice } from "./action";
+import { useState } from "react";
 
 export default function InvoicePage() {
-  const data: FormDataInterface = {
-    id: 1,
-    customer_Name: "John Doe",
-    mobile_Number: "0912345678",
-    address: "Yangon Insein",
-    purchase_date: "2025-01-04",
-    product_Details: {
-      product_Name: "စိန်ဆွဲကြိုး",
-      purity_16: "3500000",
-      purity_15: "",
-      purity_14: "",
-      weight: {
-        row1: [0, 0, 0, 0],
-        row2: [0, 0, 0, 0],
-        row3: [2, 1, 3, 1],
-        row4: [0, 0, 0, 0],
-        row5: [0, 0, 0, 0],
-        row6: [0, 0, 0, 0],
-      },
-      handWidth: "18",
-      length: "18",
-    },
-    total_Amount: "500000",
-    reject_Amount: "25000",
-    remaining_Amount: "475000",
-    appointment_Date: "2025-01-24",
-    invoice_Number: "1735956277295-8rtw8p4zr",
-    signature: "101101",
-  };
+  const [invoiceData, setInvoiceData] = useState<FormDataInterface[]>([]);
   return (
     <Box position={"relative"}>
       <Box
@@ -65,14 +39,29 @@ export default function InvoicePage() {
       </Box>
 
       <Box mt={9}>
+        <form
+          action={async () => {
+            const data: FormDataInterface[] = await getInvoice();
+            setInvoiceData(data);
+          }}>
+          <Button type="submit">Get Invoice</Button>
+        </form>
         <Grid container spacing={1}>
-          {Array.from({ length: 10 }).map((_, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index}>
-              <Box>
-                <InvoiceCard data={data} />
-              </Box>
-            </Grid>
-          ))}
+          {invoiceData
+            .slice()
+            .sort((a, b) => b.id - a.id)
+            .slice(0, 15)
+            .map((data, index) => (
+              <Grid item xs={12} sm={6} md={6} key={index}>
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                  }}>
+                  <InvoiceCard data={data} />
+                </Box>
+              </Grid>
+            ))}
         </Grid>
       </Box>
     </Box>
