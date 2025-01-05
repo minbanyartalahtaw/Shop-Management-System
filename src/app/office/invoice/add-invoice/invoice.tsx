@@ -1,7 +1,19 @@
 "use client";
 
-import { Grid, Paper, TextField, Typography, Box, Button } from "@mui/material";
-import { format } from "date-fns";
+import {
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormControlLabel,
+  Checkbox,
+} from "@mui/material";
 import { FormDataInterface } from "@/app/form/form";
 import InvoiceCard from "./invoice2";
 import React from "react";
@@ -15,10 +27,12 @@ export default function Invoice() {
     address: "",
     purchase_date: "",
     product_Details: {
+      product_Type: "",
       product_Name: "",
       purity_16: "",
       purity_15: "",
       purity_14: "",
+      purity_14_2: "",
       weight: {
         row1: [0, 0, 0, 0],
         row2: [0, 0, 0, 0],
@@ -29,6 +43,7 @@ export default function Invoice() {
       },
       handWidth: "",
       length: "",
+      isOrder: false,
     },
     total_Amount: "0",
     reject_Amount: "0",
@@ -37,13 +52,25 @@ export default function Invoice() {
     invoice_Number: "",
     signature: "",
   };
+  const productType = [
+    "Product_1",
+    "Product_2",
+    "Product_3",
+    "Product_4",
+    "Product_5",
+    "Product_6",
+    "Product_7",
+    "Product_8",
+    "Product_9",
+    "Product_10",
+  ];
   const [formData, setFormData] = React.useState(defaultForm);
   const id = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   formData.invoice_Number = id;
   const checkInvoice = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => {
-      alert("Invoice Created Successfully");
+      alert("ဘောက်ချာသိမ်းပြီး");
       setFormData(defaultForm);
     }, 1000);
   };
@@ -132,9 +159,13 @@ export default function Invoice() {
                 fullWidth
                 label="နေ့စွဲ"
                 variant="outlined"
-                value={format(new Date(), "yyyy-MM-dd")}
-                InputProps={{
-                  readOnly: true,
+                type="date"
+                value={formData.purchase_date}
+                onChange={(e) =>
+                  setFormData({ ...formData, purchase_date: e.target.value })
+                }
+                InputLabelProps={{
+                  shrink: true,
                 }}
                 name="purchase_date"
               />
@@ -143,9 +174,35 @@ export default function Invoice() {
 
           <Grid container spacing={2} mb={3}>
             <Grid item xs={12} md={7}>
+              <FormControl fullWidth sx={{ mb: 1 }}>
+                <InputLabel id="product-select-label">
+                  ပစ္စည်းအမျိုးအစား
+                </InputLabel>
+                <Select
+                  name="product_Type"
+                  labelId="product-select-label"
+                  label="ပစ္စည်းအမျိုးအစား"
+                  id="product-select"
+                  value={formData.product_Details.product_Type}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      product_Details: {
+                        ...formData.product_Details,
+                        product_Type: e.target.value,
+                      },
+                    })
+                  }>
+                  {productType.map((item, index) => (
+                    <MenuItem key={index} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
               <TextField
                 fullWidth
-                label="ပစ္စည်းအမျိုးအမည်"
+                label="ပစ္စည်းအမည်"
                 variant="outlined"
                 multiline
                 rows={2}
@@ -173,43 +230,53 @@ export default function Invoice() {
             </Grid>
             <Grid item xs={12} md={4}>
               <Grid container spacing={2}>
-                {["၁၆ ပဲရည်", "၁၅ ပဲရည်", "၁၄ ပဲရည်"].map((label) => (
-                  <Grid item xs={12} sm={4} md={12} key={label}>
-                    <TextField
-                      type="number"
-                      fullWidth
-                      label={label}
-                      variant="outlined"
-                      value={
-                        label === "၁၆ ပဲရည်"
-                          ? formData.product_Details.purity_16
-                          : label === "၁၅ ပဲရည်"
-                          ? formData.product_Details.purity_15
-                          : formData.product_Details.purity_14
-                      }
-                      onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          product_Details: {
-                            ...formData.product_Details,
-                            [label === "၁၆ ပဲရည်"
+                {["၁၆ ပဲရည်", "၁၅ ပဲရည်", "၁၄ ပဲရည်", "၁၄ ပဲ ၂ ပြားရည်"].map(
+                  (label) => (
+                    <Grid item xs={12} sm={4} md={12} key={label}>
+                      <TextField
+                        type="number"
+                        fullWidth
+                        label={label}
+                        variant="outlined"
+                        value={
+                          formData.product_Details[
+                            label === "၁၆ ပဲရည်"
                               ? "purity_16"
                               : label === "၁၅ ပဲရည်"
                               ? "purity_15"
-                              : "purity_14"]: e.target.value,
-                          },
-                        })
-                      }
-                      name={
-                        label === "၁၆ ပဲရည်"
-                          ? "purity_16"
-                          : label === "၁၅ ပဲရည်"
-                          ? "purity_15"
-                          : "purity_14"
-                      }
-                    />
-                  </Grid>
-                ))}
+                              : label === "၁၄ ပဲရည်"
+                              ? "purity_14"
+                              : "purity_14_2"
+                          ]
+                        }
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            product_Details: {
+                              ...formData.product_Details,
+                              [label === "၁၆ ပဲရည်"
+                                ? "purity_16"
+                                : label === "၁၅ ပဲရည်"
+                                ? "purity_15"
+                                : label === "၁၄ ပဲရည်"
+                                ? "purity_14"
+                                : "purity_14_2"]: e.target.value,
+                            },
+                          })
+                        }
+                        name={
+                          label === "၁၆ ပဲရည်"
+                            ? "purity_16"
+                            : label === "၁၅ ပဲရည်"
+                            ? "purity_15"
+                            : label === "၁၄ ပဲရည်"
+                            ? "purity_14"
+                            : "purity_14_2"
+                        }
+                      />
+                    </Grid>
+                  )
+                )}
               </Grid>
             </Grid>
           </Grid>
@@ -543,9 +610,10 @@ export default function Invoice() {
                 onChange={() =>
                   setFormData({
                     ...formData,
-                    remaining_Amount: (
-                      Number(formData.total_Amount) -
-                      Number(formData.reject_Amount)
+                    remaining_Amount: (Number(formData.reject_Amount) === 0
+                      ? 0
+                      : Number(formData.total_Amount) -
+                        Number(formData.reject_Amount)
                     ).toString(),
                   })
                 }
@@ -554,8 +622,28 @@ export default function Invoice() {
             </Grid>
           </Grid>
 
-          <Grid container spacing={2} mt={2}>
-            <Grid item xs={12} sm={6}>
+          <Grid container spacing={1} mt={2}>
+            <Grid item xs={12} sm={3}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={formData.product_Details.isOrder}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        product_Details: {
+                          ...formData.product_Details,
+                          isOrder: e.target.checked,
+                        },
+                      })
+                    }
+                    name="isOrder"
+                  />
+                }
+                label="အော်ဒါပစ္စည်း"
+              />
+            </Grid>
+            <Grid item xs={12} sm={5}>
               <TextField
                 fullWidth
                 label="ရက်ချိန်း"
@@ -574,7 +662,8 @@ export default function Invoice() {
                 name="appointment_Date"
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+
+            <Grid item xs={12} sm={3}>
               <TextField
                 fullWidth
                 label="လက်မှတ်"
@@ -601,7 +690,7 @@ export default function Invoice() {
                   color="primary"
                   size="large"
                   onClick={() => {
-                    if (formData.customer_Name === "")
+                    /* if (formData.customer_Name === "")
                       return alert("အမည်ထည့်ပါ");
                     if (formData.product_Details.product_Name === "")
                       return alert("ပစ္စည်းအမျိုးအစားထည့်ပါ။");
@@ -610,7 +699,8 @@ export default function Invoice() {
                     const element = document.getElementById(id);
                     if (element) {
                       element.scrollIntoView({ behavior: "smooth" });
-                    }
+                    } */
+                    console.log(formData);
                   }}>
                   ဘောက်ချာကြည့်ရန်
                 </Button>

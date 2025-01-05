@@ -37,13 +37,11 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontSize: getWidth() > 1300 ? 16 : 12,
+    fontSize: getWidth() > 1300 ? 15 : 12,
   },
 });
 
 const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
-  console.log(getWidth());
-
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => setIsExpanded(!isExpanded);
@@ -126,15 +124,25 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                 <Box bgcolor={"grey.100"} p={2} mb={2}>
                   <Typography variant="body2" mb={1}>
                     <strong>အမျိုးအစား - </strong>{" "}
+                    {data.product_Details.product_Type}
+                  </Typography>
+                  <Typography variant="body2" mb={1}>
+                    <strong>ပစ္စည်း - </strong>{" "}
                     {data.product_Details.product_Name}
                   </Typography>
                   <Typography variant="body2" mb={1}>
                     <strong>ရွှေစျေး - </strong>{" "}
-                    {data.product_Details.purity_16
-                      ? "16K"
-                      : data.product_Details.purity_15
-                      ? "15K"
-                      : "14K"}
+                    {data.product_Details.purity_16 ? (
+                      "16K"
+                    ) : data.product_Details.purity_15 ? (
+                      "15K"
+                    ) : data.product_Details.purity_14 ? (
+                      "14K"
+                    ) : data.product_Details.purity_14_2 ? (
+                      "14K-2"
+                    ) : (
+                      <span style={{ color: "red" }}>ရွှေစျေးမထည့်ထားပါ</span>
+                    )}
                   </Typography>
                   {data.product_Details.handWidth && (
                     <Typography variant="body2" mb={1}>
@@ -159,15 +167,7 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                     </Typography>
                   </Box>
                   <Box display={"flex"}>
-                    <Typography
-                      variant="body2"
-                      color={
-                        Number(data.total_Amount) -
-                          Number(data.reject_Amount) ===
-                        0
-                          ? "text.secondary"
-                          : "error"
-                      }>
+                    <Typography variant="body2" color={"error"}>
                       ကျန်ငွေ -
                       {formatCurrency(
                         (
@@ -261,9 +261,28 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
           </CardContent>
 
           <Box sx={{ bgcolor: "grey.100", px: 3, py: 2 }}>
-            <Box>
-              <Box textAlign="right">
-                <Typography variant="h6" color="primary">
+            <Box
+              display={"flex"}
+              sx={{ justifyContent: "space-between", alignItems: "center" }}>
+              {/*Is Order Display*/}
+              {data.product_Details.isOrder && (
+                <Typography
+                  variant="body2"
+                  color="primary"
+                  sx={{
+                    mb: 1,
+                    fontWeight: "bold",
+                    bgcolor: "grey.300",
+                    px: 2,
+                    py: 1,
+                    borderRadius: 1,
+                  }}>
+                  အော်ဒါပစ္စည်း
+                </Typography>
+              )}
+
+              <Box>
+                <Typography color="primary">
                   {formatCurrency(data.total_Amount)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

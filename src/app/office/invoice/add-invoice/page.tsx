@@ -5,7 +5,7 @@ import Invoice from "./invoice";
 
 export default function CustomerPage() {
   return (
-    <Box>
+    <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
       <Invoice />
     </Box>
   );

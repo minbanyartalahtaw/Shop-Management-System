@@ -9,10 +9,12 @@ const invoice_Data: FormDataInterface = {
   address: "",
   purchase_date: "",
   product_Details: {
+    product_Type: "",
     product_Name: "",
     purity_16: "",
     purity_15: "",
     purity_14: "",
+    purity_14_2: "",
     weight: {
       row1: [],
       row2: [],
@@ -23,6 +25,7 @@ const invoice_Data: FormDataInterface = {
     },
     handWidth: "",
     length: "",
+    isOrder: false,
   },
   total_Amount: "",
   reject_Amount: "",
@@ -43,11 +46,17 @@ export async function createInvoice(formData: any) {
   const purity_16 = formData.get("purity_16");
   const purity_15 = formData.get("purity_15");
   const purity_14 = formData.get("purity_14");
+  const purity_14_2 = formData.get("purity_14_2");
   const handWidth = formData.get("handWidth");
   const length = formData.get("length");
+  const product_Type = formData.get("product_Type");
+  const isOrder = formData.get("isOrder") === "on";
   const total_Amount = formData.get("total_Amount");
   const reject_Amount = formData.get("reject_Amount");
-  const remaining_Amount = formData.get("remaining_Amount");
+  const remaining_Amount =
+    Number(total_Amount) - Number(reject_Amount) > 0
+      ? (Number(total_Amount) - Number(reject_Amount)).toString()
+      : "0";
   const appointment_Date = formData.get("appointment_Date");
   const invoice_Number = formData.get("invoice_Number");
   const signature = formData.get("signature");
@@ -91,6 +100,9 @@ export async function createInvoice(formData: any) {
   invoice_Data.product_Details.purity_16 = purity_16;
   invoice_Data.product_Details.purity_15 = purity_15;
   invoice_Data.product_Details.purity_14 = purity_14;
+  invoice_Data.product_Details.purity_14_2 = purity_14_2;
+  invoice_Data.product_Details.isOrder = isOrder;
+  invoice_Data.product_Details.product_Type = product_Type;
   invoice_Data.product_Details.weight.row1 = [
     Number(ပေးရွှေချိန်_1),
     Number(ပေးရွှေချိန်_2),
@@ -136,6 +148,7 @@ export async function createInvoice(formData: any) {
   invoice_Data.invoice_Number = invoice_Number;
   invoice_Data.signature = signature;
   console.log(invoice_Data);
+  console.log("Is This order : " + isOrder);
 
   const isExit = fs.existsSync("invoice.json");
   if (isExit) {

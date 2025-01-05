@@ -8,13 +8,16 @@ export interface weight_Details {
 }
 
 export interface ProductDetails {
+  product_Type: string; // add
   product_Name: string;
   purity_16: string;
   purity_15: string;
   purity_14: string;
+  purity_14_2: string; // add
   weight: weight_Details;
   handWidth: string;
   length: string;
+  isOrder: boolean; // add
 }
 export interface FormDataInterface {
   id: number;

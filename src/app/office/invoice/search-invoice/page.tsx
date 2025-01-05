@@ -29,10 +29,12 @@ export default function InvoicePage() {
     address: "",
     purchase_date: "",
     product_Details: {
+      product_Type: "",
       product_Name: "",
       purity_16: "",
       purity_15: "",
       purity_14: "",
+      purity_14_2: "",
       weight: {
         row1: [0, 0, 0, 0],
         row2: [0, 0, 0, 0],
@@ -43,6 +45,7 @@ export default function InvoicePage() {
       },
       handWidth: "",
       length: "",
+      isOrder: false,
     },
     total_Amount: "",
     reject_Amount: "",
