@@ -61,7 +61,7 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
         transition={{ duration: 0.5 }}>
         <Card
           sx={{
-            width: getWidth() > 1300 ? "50vw" : "80vw",
+            width: getWidth() > 1300 ? "50vw" : "75vw",
             mx: "auto",
             my: 4,
             overflow: "hidden",

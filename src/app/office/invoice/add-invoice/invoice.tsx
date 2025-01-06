@@ -649,6 +649,7 @@ export default function Invoice() {
                 label="ရက်ချိန်း"
                 variant="outlined"
                 type="date"
+                disabled={!formData.product_Details.isOrder}
                 InputLabelProps={{
                   shrink: true,
                 }}

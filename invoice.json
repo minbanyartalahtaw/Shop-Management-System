@@ -22,7 +22,7 @@
       },
       "handWidth": "12",
       "length": "24",
-      "isOrder": "on"
+      "isOrder": true
     },
     "total_Amount": "9000000",
     "reject_Amount": "3000000",
@@ -54,7 +54,7 @@
       },
       "handWidth": "13",
       "length": "13",
-      "isOrder": "on"
+      "isOrder": true
     },
     "total_Amount": "520000",
     "reject_Amount": "20000",
@@ -122,8 +122,8 @@
     },
     "total_Amount": "1900000",
     "reject_Amount": "",
-    "remaining_Amount": "1900000",
-    "appointment_Date": "",
+    "remaining_Amount": "",
+    "appointment_Date": "2025-01-13",
     "invoice_Number": "1736123175568-0vm3xurcc",
     "signature": "101101"
   },
@@ -187,8 +187,40 @@
     "total_Amount": "80000",
     "reject_Amount": "",
     "remaining_Amount": "",
-    "appointment_Date": "",
+    "appointment_Date": "2025-01-13",
     "invoice_Number": "1736125334991-v5pz6mg63",
+    "signature": "101101"
+  },
+  {
+    "id": 7,
+    "customer_Name": "Bo Bo",
+    "mobile_Number": "09414141411",
+    "address": "Yangon Hledan",
+    "purchase_date": "2025-01-06",
+    "product_Details": {
+      "product_Type": "Product_7",
+      "product_Name": "လက်ကောက်",
+      "purity_16": "",
+      "purity_15": "5900000",
+      "purity_14": "",
+      "purity_14_2": "",
+      "weight": {
+        "row1": [0, 0, 0, 0],
+        "row2": [0, 0, 0, 0],
+        "row3": [2, 2, 2, 2],
+        "row4": [0, 3, 2, 0],
+        "row5": [0, 0, 0, 0],
+        "row6": [0, 0, 0, 0]
+      },
+      "handWidth": "19",
+      "length": "20",
+      "isOrder": true
+    },
+    "total_Amount": "5600000",
+    "reject_Amount": "2500000",
+    "remaining_Amount": "3100000",
+    "appointment_Date": "2025-01-16",
+    "invoice_Number": "1736172529489-d2r4e98mf",
     "signature": "101101"
   }
 ]
