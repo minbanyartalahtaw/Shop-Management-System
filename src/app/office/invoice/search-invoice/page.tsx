@@ -22,6 +22,10 @@ import { styled } from "@mui/material/styles";
 import { searchInvoice } from "./action";
 
 export default function InvoicePage() {
+  const getWidth = () =>
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
   const data: FormDataInterface = {
     id: 1,
     customer_Name: "",
@@ -112,7 +116,11 @@ export default function InvoicePage() {
         alignItems: "center",
       }}>
       {/* Search Box */}
-      <Box mt={5} display="flex" justifyContent="center" width="100%">
+      <Box
+        mt={5}
+        display="flex"
+        justifyContent="center"
+        sx={{ width: getWidth() > 1300 ? "50vw" : "70vw" }}>
         <form
           action={async (formData: FormData) => {
             const data = await searchInvoice(formData);

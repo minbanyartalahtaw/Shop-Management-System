@@ -62,19 +62,20 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
         <Card
           sx={{
             mx: "auto",
-            my: 4,
+            my: 2,
             overflow: "hidden",
+            boxShadow: 8,
           }}>
           <Box
             sx={{
-              p: 3,
+              p: 1,
               background: "#f44336",
               color: "white",
               display: "flex",
               justifyContent: "space-between",
             }}>
             <Typography
-              variant="h4"
+              variant="body2"
               fontWeight="bold"
               sx={{
                 backgroundImage:
@@ -162,12 +163,7 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                   </Box>
                   <Box display={"flex"}>
                     <Typography variant="body2" color={"error"}>
-                      ကျန်ငွေ -
-                      {formatCurrency(
-                        (
-                          Number(data.total_Amount) - Number(data.reject_Amount)
-                        ).toString()
-                      )}
+                      ကျန်ငွေ - {formatCurrency(data.remaining_Amount)}
                     </Typography>
                   </Box>
                 </Box>

@@ -54,9 +54,9 @@ export async function createInvoice(formData: any) {
   const total_Amount = formData.get("total_Amount");
   const reject_Amount = formData.get("reject_Amount");
   const remaining_Amount =
-    Number(total_Amount) - Number(reject_Amount) > 0
-      ? (Number(total_Amount) - Number(reject_Amount)).toString()
-      : "0";
+    Number(reject_Amount) === 0
+      ? ""
+      : (Number(total_Amount) - Number(reject_Amount)).toString();
   const appointment_Date = formData.get("appointment_Date");
   const invoice_Number = formData.get("invoice_Number");
   const signature = formData.get("signature");
@@ -143,7 +143,11 @@ export async function createInvoice(formData: any) {
   invoice_Data.product_Details.length = length;
   invoice_Data.total_Amount = total_Amount;
   invoice_Data.reject_Amount = reject_Amount;
+
+  invoice_Data.remaining_Amount =
+    Number(reject_Amount) === 0 ? "0" : remaining_Amount;
   invoice_Data.remaining_Amount = remaining_Amount;
+
   invoice_Data.appointment_Date = appointment_Date;
   invoice_Data.invoice_Number = invoice_Number;
   invoice_Data.signature = signature;

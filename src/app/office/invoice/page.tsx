@@ -44,9 +44,9 @@ export default function InvoicePage() {
             const data: FormDataInterface[] = await getInvoice();
             setInvoiceData(data);
           }}>
-          <Button type="submit">Get Invoice</Button>
+          <Button type="submit">ဘော်ချာကြည့်ရန်နှိပ်ပါ</Button>
         </form>
-        <Grid container spacing={1}>
+        <Grid container spacing={5}>
           {invoiceData
             .slice()
             .sort((a, b) => b.id - a.id)

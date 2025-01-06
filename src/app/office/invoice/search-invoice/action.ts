@@ -15,7 +15,7 @@ export async function searchInvoice(formData: any) {
       if (invoiceData[i].invoice_Number.split("-")[1] === searchValue) {
         return invoiceData[i];
       } else {
-        console.log("Invoice not found");
+        continue;
       }
     }
   } else {

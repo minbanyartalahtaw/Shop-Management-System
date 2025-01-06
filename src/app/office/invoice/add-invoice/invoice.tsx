@@ -87,7 +87,7 @@ export default function Invoice() {
         flexWrap: "wrap",
       }}>
       {/** Invoice **/}
-      <Box mb={100} sx={{ borderBottom: "1px solid #ccc" }}>
+      <Box mb={500} sx={{ borderBottom: "1px solid #ccc" }}>
         <Paper
           sx={{
             p: { xs: 1, sm: 2 },
@@ -690,7 +690,7 @@ export default function Invoice() {
                   color="primary"
                   size="large"
                   onClick={() => {
-                    /* if (formData.customer_Name === "")
+                    if (formData.customer_Name === "")
                       return alert("အမည်ထည့်ပါ");
                     if (formData.product_Details.product_Name === "")
                       return alert("ပစ္စည်းအမျိုးအစားထည့်ပါ။");
@@ -699,8 +699,7 @@ export default function Invoice() {
                     const element = document.getElementById(id);
                     if (element) {
                       element.scrollIntoView({ behavior: "smooth" });
-                    } */
-                    console.log(formData);
+                    }
                   }}>
                   ဘောက်ချာကြည့်ရန်
                 </Button>

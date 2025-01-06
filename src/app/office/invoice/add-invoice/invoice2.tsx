@@ -61,6 +61,8 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
         transition={{ duration: 0.5 }}>
         <Card
           sx={{
+            width: getWidth() > 1300 ? "50vw" : "50vw",
+
             mx: "auto",
             my: 4,
             overflow: "hidden",
@@ -170,9 +172,12 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                     <Typography variant="body2" color={"error"}>
                       ကျန်ငွေ -
                       {formatCurrency(
-                        (
-                          Number(data.total_Amount) - Number(data.reject_Amount)
-                        ).toString()
+                        data.reject_Amount === "0"
+                          ? "0"
+                          : (
+                              Number(data.total_Amount) -
+                              Number(data.reject_Amount)
+                            ).toString()
                       )}
                     </Typography>
                   </Box>
