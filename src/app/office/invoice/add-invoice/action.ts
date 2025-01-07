@@ -26,6 +26,7 @@ const invoice_Data: FormDataInterface = {
     handWidth: "",
     length: "",
     isOrder: false,
+    isOrderTaken: false,
   },
   total_Amount: "",
   reject_Amount: "",

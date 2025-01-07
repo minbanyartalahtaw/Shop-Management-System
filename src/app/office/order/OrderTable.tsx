@@ -16,14 +16,22 @@ import {
 } from "@mui/material";
 import { FormDataInterface } from "@/app/form/form";
 import OrderDetails from "./order-details";
+import { takeOrder } from "./action";
+import InfoIcon from "@mui/icons-material/Info";
 
 interface OrderTableProps {
   orders: FormDataInterface[];
 }
 
 export default function OrderTable({ orders }: OrderTableProps) {
-  const [filteredOrders, setFilteredOrders] =
-    useState<FormDataInterface[]>(orders);
+  const [filteredOrders, setFilteredOrders] = useState<FormDataInterface[]>(
+    orders.filter(
+      (order) =>
+        order.product_Details.isOrder && !order.product_Details.isOrderTaken
+    )
+  );
+  console.log(filteredOrders);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [orderBy, setOrderBy] =
     useState<keyof FormDataInterface>("appointment_Date");
@@ -34,11 +42,15 @@ export default function OrderTable({ orders }: OrderTableProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const filtered = orders.filter(
-      (order) =>
-        order.customer_Name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        order.invoice_Number.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filtered = orders
+      .filter((order) => !order.product_Details.isOrderTaken)
+      .filter(
+        (order) =>
+          order.customer_Name
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()) ||
+          order.invoice_Number.toLowerCase().includes(searchTerm.toLowerCase())
+      );
     setFilteredOrders(filtered);
   }, [searchTerm, orders]);
 
@@ -204,8 +216,21 @@ export default function OrderTable({ orders }: OrderTableProps) {
                   backgroundColor: "#f8f9fa",
                   borderBottom: "2px solid #e9ecef",
                   py: 2,
-                }}
-              />
+                  textAlign: "center",
+                }}>
+                <InfoIcon sx={{ color: "grey" }} />
+              </TableCell>
+              <TableCell
+                sx={{
+                  backgroundColor: "error.main",
+                  borderBottom: "2px solid #e9ecef",
+                  py: 2,
+                  fontSize: "0.95rem",
+                  fontWeight: 600,
+                  color: "white",
+                }}>
+                အစ္စည်းအပ်ရန်
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -285,6 +310,38 @@ export default function OrderTable({ orders }: OrderTableProps) {
                       },
                     }}>
                     အသေးစိတ်
+                  </Button>
+                </TableCell>
+                <TableCell
+                  sx={{
+                    py: 2,
+                    borderBottom: "1px solid #e9ecef",
+                  }}>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    size="small"
+                    onClick={() =>
+                      new Promise((resolve) => {
+                        if (window.confirm("Order အပ်ရန်လုပ်ပါသလား?")) {
+                          takeOrder(
+                            order.invoice_Number,
+                            order.product_Details.isOrder,
+                            order.product_Details.isOrderTaken
+                          );
+                          setTimeout(resolve, 5000);
+                        }
+                      })
+                    }
+                    sx={{
+                      borderRadius: "6px",
+                      textTransform: "none",
+                      boxShadow: "none",
+                      "&:hover": {
+                        boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+                      },
+                    }}>
+                    အပ်ရန်
                   </Button>
                 </TableCell>
               </TableRow>
