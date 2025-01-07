@@ -56,7 +56,7 @@
       "handWidth": "13",
       "length": "13",
       "isOrder": true,
-      "isOrderTaken": false
+      "isOrderTaken": true
     },
     "total_Amount": "520000",
     "reject_Amount": "20000",

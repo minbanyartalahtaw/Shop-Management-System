@@ -55,19 +55,19 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose, onOpen }) => {
   }, []);
 
   const menuItems = [
-    { text: "Dashboard", icon: <DashboardIcon />, path: "/office/dashboard" },
     {
-      text: "Invoice",
+      text: "ဘောက်ချာမှတ်ရန်",
       icon: <InvoiceIcon />,
       path: "/office/invoice/add-invoice",
     },
+    { text: "စရင်းများ", icon: <DashboardIcon />, path: "/office/dashboard" },
+    { text: "အော်ဒါ", icon: <OrderIcon />, path: "/office/order" },
+    { text: "ဝယ်သူများ", icon: <CustomerIcon />, path: "/office/customer" },
     {
       text: "ဘောက်ချာများ",
       icon: <SourceIcon />,
       path: "/office/invoice/",
     },
-    { text: "Customer", icon: <CustomerIcon />, path: "/office/customer" },
-    { text: "Order", icon: <OrderIcon />, path: "/office/order" },
     { text: "Settings", icon: <SettingIcon />, path: "/office/setting" },
   ];
 

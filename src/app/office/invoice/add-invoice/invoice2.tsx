@@ -270,19 +270,39 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
               display={"flex"}
               sx={{ justifyContent: "space-between", alignItems: "center" }}>
               {/*Is Order Display*/}
-              {data.product_Details.isOrder && (
-                <Typography
-                  variant="body2"
-                  color="primary"
-                  sx={{
-                    mb: 1,
-                    fontWeight: "bold",
-                    bgcolor: "grey.300",
-                    px: 2,
-                    py: 1,
-                    borderRadius: 1,
-                  }}>
-                  အော်ဒါပစ္စည်း
+              {data.product_Details.isOrder == true ? (
+                !data.product_Details.isOrderTaken ? (
+                  <Typography
+                    variant="body2"
+                    color="error"
+                    sx={{
+                      mb: 1,
+                      fontWeight: "bold",
+                      bgcolor: "grey.300",
+                      px: 2,
+                      py: 1,
+                      borderRadius: 1,
+                    }}>
+                    အော်ဒါ
+                  </Typography>
+                ) : (
+                  <Typography
+                    variant="body2"
+                    color="success"
+                    sx={{
+                      mb: 1,
+                      fontWeight: "bold",
+                      bgcolor: "grey.300",
+                      px: 2,
+                      py: 1,
+                      borderRadius: 1,
+                    }}>
+                    ပစ္စည်းပေးပြီး
+                  </Typography>
+                )
+              ) : (
+                <Typography variant="body2" color="primary">
+                  အရောင်း
                 </Typography>
               )}
 

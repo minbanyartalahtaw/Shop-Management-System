@@ -18,6 +18,7 @@ export interface ProductDetails {
   handWidth: string;
   length: string;
   isOrder: boolean; // add
+  isOrderTaken: boolean; // add
 }
 export interface FormDataInterface {
   id: number;

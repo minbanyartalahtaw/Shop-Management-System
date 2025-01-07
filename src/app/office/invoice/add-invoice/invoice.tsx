@@ -44,6 +44,7 @@ export default function Invoice() {
       handWidth: "",
       length: "",
       isOrder: false,
+      isOrderTaken: false,
     },
     total_Amount: "0",
     reject_Amount: "0",

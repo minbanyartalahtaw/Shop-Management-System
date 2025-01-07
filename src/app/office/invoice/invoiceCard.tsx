@@ -69,8 +69,9 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
           <Box
             sx={{
               p: 1,
-              background: "#f44336",
-              color: "white",
+              background: "rgba(255, 63, 63, 0.9)",
+
+              color: "black",
               display: "flex",
               justifyContent: "space-between",
             }}>
@@ -78,10 +79,8 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
               variant="body2"
               fontWeight="bold"
               sx={{
-                backgroundImage:
-                  "linear-gradient(to top,rgb(219, 219, 219),rgb(255, 255, 255))",
+                color: "grey.100",
                 WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
               }}>
               {data.invoice_Number.slice(14)}
             </Typography>
@@ -255,19 +254,39 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
               display={"flex"}
               sx={{ justifyContent: "space-between", alignItems: "center" }}>
               {/*Is Order Display*/}
-              {data.product_Details.isOrder && (
-                <Typography
-                  variant="body2"
-                  color="primary"
-                  sx={{
-                    mb: 1,
-                    fontWeight: "bold",
-                    bgcolor: "grey.300",
-                    px: 2,
-                    py: 1,
-                    borderRadius: 1,
-                  }}>
-                  အော်ဒါပစ္စည်း
+              {data.product_Details.isOrder == true ? (
+                !data.product_Details.isOrderTaken ? (
+                  <Typography
+                    variant="body2"
+                    color="error"
+                    sx={{
+                      mb: 1,
+                      fontWeight: "bold",
+                      bgcolor: "grey.300",
+                      px: 2,
+                      py: 1,
+                      borderRadius: 1,
+                    }}>
+                    အော်ဒါ
+                  </Typography>
+                ) : (
+                  <Typography
+                    variant="body2"
+                    color="success"
+                    sx={{
+                      mb: 1,
+                      fontWeight: "bold",
+                      bgcolor: "grey.300",
+                      px: 2,
+                      py: 1,
+                      borderRadius: 1,
+                    }}>
+                    ပစ္စည်းပေးပြီး
+                  </Typography>
+                )
+              ) : (
+                <Typography variant="body2" color="primary">
+                  အရောင်း
                 </Typography>
               )}
 
