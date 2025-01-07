@@ -1,1 +1,443 @@
-[{"id":1,"customer_Name":"မင်းဗညားတလထော","mobile_Number":"09777444622","address":"Yangon Insein","purchase_date":"2025-01-07","product_Details":{"product_Type":"Product_1","product_Name":"စိန်လက်ကောက်","purity_16":"","purity_15":"6100000","purity_14":"","purity_14_2":"","weight":{"row1":[0,0,0,0],"row2":[0,0,0,0],"row3":[2,3,4,1],"row4":[0,0,0,0],"row5":[0,4,3,0],"row6":[0,0,0,0]},"handWidth":"18","length":"","isOrder":true,"isOrderTaken":false},"total_Amount":"15000000","reject_Amount":"7500000","remaining_Amount":"7500000","appointment_Date":"2025-01-25","invoice_Number":"1736250799036-55d3awzw1","signature":"101101"},{"id":2,"customer_Name":"ကလျာ","mobile_Number":"09567826453","address":"Yangon","purchase_date":"2025-01-08","product_Details":{"product_Type":"Product_4","product_Name":"လက်ကောက်","purity_16":"","purity_15":"5900000","purity_14":"","purity_14_2":"","weight":{"row1":[0,0,0,0],"row2":[0,0,0,0],"row3":[0,2,3,1],"row4":[0,0,3,0],"row5":[0,0,0,0],"row6":[0,0,0,0]},"handWidth":"","length":"","isOrder":false,"isOrderTaken":false},"total_Amount":"600000","reject_Amount":"","remaining_Amount":"","appointment_Date":null,"invoice_Number":"1736251015702-zj3pdfbtl","signature":"101101"},{"id":3,"customer_Name":"အောင်အောင်","mobile_Number":"09564534231","address":"ခဝဲခြံ","purchase_date":"2025-01-10","product_Details":{"product_Type":"Product_5","product_Name":"ဟန်းချိန်း","purity_16":"","purity_15":"5900000","purity_14":"","purity_14_2":"","weight":{"row1":[0,0,0,0],"row2":[0,0,0,0],"row3":[2,2,3,1],"row4":[0,0,4,0],"row5":[0,0,0,0],"row6":[0,0,0,0]},"handWidth":"","length":"","isOrder":false,"isOrderTaken":false},"total_Amount":"2400000","reject_Amount":"","remaining_Amount":"","appointment_Date":null,"invoice_Number":"1736251140438-l8flwjyax","signature":"101101"},{"id":4,"customer_Name":"မိုးအောင်","mobile_Number":"0981725457","address":"အင်းစိန်","purchase_date":"2025-01-08","product_Details":{"product_Type":"Product_5","product_Name":"နဝရတ်လက်စွပ်","purity_16":"","purity_15":"5900000","purity_14":"","purity_14_2":"","weight":{"row1":[0,3,0,0],"row2":[0,0,0,0],"row3":[2,4,1,1],"row4":[0,3,0,1],"row5":[0,0,0,0],"row6":[0,0,0,0]},"handWidth":"10","length":"","isOrder":true,"isOrderTaken":false},"total_Amount":"3700000","reject_Amount":"1200000","remaining_Amount":"2500000","appointment_Date":"2025-02-05","invoice_Number":"1736251319025-zhvw303ug","signature":"101101"},{"id":5,"customer_Name":"ဘယ်ကျော်","mobile_Number":"09675321546","address":"ပဲခူး","purchase_date":"2025-01-11","product_Details":{"product_Type":"Product_6","product_Name":"စိန်လက်စွပ်","purity_16":"","purity_15":"","purity_14":"","purity_14_2":"4900000","weight":{"row1":[0,0,0,0],"row2":[0,0,0,0],"row3":[2,1,3,1],"row4":[0,3,2,0],"row5":[0,0,0,0],"row6":[0,0,0,0]},"handWidth":"12","length":"","isOrder":true,"isOrderTaken":false},"total_Amount":"3900000","reject_Amount":"1100000","remaining_Amount":"2800000","appointment_Date":"2025-01-16","invoice_Number":"1736251514141-8sga2w8wn","signature":"101101"},{"id":6,"customer_Name":"Aung Aung","mobile_Number":"09876576212","address":"Hledan ","purchase_date":"2025-01-07","product_Details":{"product_Type":"Product_5","product_Name":"Gold Ring","purity_16":"","purity_15":"5900000","purity_14":"","purity_14_2":"","weight":{"row1":[0,0,0,0],"row2":[0,0,0,0],"row3":[2,2,2,2],"row4":[0,3,0,0],"row5":[0,0,0,0],"row6":[0,0,0,0]},"handWidth":"10","length":"","isOrder":true,"isOrderTaken":false},"total_Amount":"4500000","reject_Amount":"2000000","remaining_Amount":"2500000","appointment_Date":"2025-02-13","invoice_Number":"1736251754839-c8pimuk3o","signature":"101101"},{"id":7,"customer_Name":"Ni Ni Aung","mobile_Number":"0987257823","address":"Yangon 9 miles","purchase_date":"2025-01-13","product_Details":{"product_Type":"Product_4","product_Name":"Gold Ring","purity_16":"","purity_15":"5900000","purity_14":"","purity_14_2":"","weight":{"row1":[0,0,0,0],"row2":[0,0,0,0],"row3":[2,2,2,2],"row4":[0,0,3,3],"row5":[0,0,3,3],"row6":[0,0,0,0]},"handWidth":"","length":"","isOrder":false,"isOrderTaken":false},"total_Amount":"200000","reject_Amount":"","remaining_Amount":"","appointment_Date":null,"invoice_Number":"1736251920286-lyvi3vksq","signature":"101101"}]
+[
+  {
+    "id": 1,
+    "customer_Name": "မင်းဗညားတလထော",
+    "mobile_Number": "09777444622",
+    "address": "Yangon Insein",
+    "purchase_date": "2025-01-07",
+    "product_Details": {
+      "product_Type": "Product_1",
+      "product_Name": "စိန်လက်ကောက်",
+      "purity_16": "",
+      "purity_15": "6100000",
+      "purity_14": "",
+      "purity_14_2": "",
+      "weight": {
+        "row1": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row2": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row3": [
+          2,
+          3,
+          4,
+          1
+        ],
+        "row4": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row5": [
+          0,
+          4,
+          3,
+          0
+        ],
+        "row6": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "handWidth": "18",
+      "length": "",
+      "isOrder": true,
+      "isOrderTaken": false
+    },
+    "total_Amount": "15000000",
+    "reject_Amount": "7500000",
+    "remaining_Amount": "7500000",
+    "appointment_Date": "2025-01-25",
+    "invoice_Number": "1736250799036-55d3awzw1",
+    "signature": "101101"
+  },
+  {
+    "id": 2,
+    "customer_Name": "ကလျာ",
+    "mobile_Number": "09567826453",
+    "address": "Yangon",
+    "purchase_date": "2025-01-08",
+    "product_Details": {
+      "product_Type": "Product_4",
+      "product_Name": "လက်ကောက်",
+      "purity_16": "",
+      "purity_15": "5900000",
+      "purity_14": "",
+      "purity_14_2": "",
+      "weight": {
+        "row1": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row2": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row3": [
+          0,
+          2,
+          3,
+          1
+        ],
+        "row4": [
+          0,
+          0,
+          3,
+          0
+        ],
+        "row5": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row6": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "handWidth": "",
+      "length": "",
+      "isOrder": false,
+      "isOrderTaken": false
+    },
+    "total_Amount": "600000",
+    "reject_Amount": "",
+    "remaining_Amount": "",
+    "appointment_Date": null,
+    "invoice_Number": "1736251015702-zj3pdfbtl",
+    "signature": "101101"
+  },
+  {
+    "id": 3,
+    "customer_Name": "အောင်အောင်",
+    "mobile_Number": "09564534231",
+    "address": "ခဝဲခြံ",
+    "purchase_date": "2025-01-10",
+    "product_Details": {
+      "product_Type": "Product_5",
+      "product_Name": "ဟန်းချိန်း",
+      "purity_16": "",
+      "purity_15": "5900000",
+      "purity_14": "",
+      "purity_14_2": "",
+      "weight": {
+        "row1": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row2": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row3": [
+          2,
+          2,
+          3,
+          1
+        ],
+        "row4": [
+          0,
+          0,
+          4,
+          0
+        ],
+        "row5": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row6": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "handWidth": "",
+      "length": "",
+      "isOrder": false,
+      "isOrderTaken": false
+    },
+    "total_Amount": "2400000",
+    "reject_Amount": "",
+    "remaining_Amount": "",
+    "appointment_Date": null,
+    "invoice_Number": "1736251140438-l8flwjyax",
+    "signature": "101101"
+  },
+  {
+    "id": 4,
+    "customer_Name": "မိုးအောင်",
+    "mobile_Number": "0981725457",
+    "address": "အင်းစိန်",
+    "purchase_date": "2025-01-08",
+    "product_Details": {
+      "product_Type": "Product_5",
+      "product_Name": "နဝရတ်လက်စွပ်",
+      "purity_16": "",
+      "purity_15": "5900000",
+      "purity_14": "",
+      "purity_14_2": "",
+      "weight": {
+        "row1": [
+          0,
+          3,
+          0,
+          0
+        ],
+        "row2": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row3": [
+          2,
+          4,
+          1,
+          1
+        ],
+        "row4": [
+          0,
+          3,
+          0,
+          1
+        ],
+        "row5": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row6": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "handWidth": "10",
+      "length": "",
+      "isOrder": true,
+      "isOrderTaken": false
+    },
+    "total_Amount": "3700000",
+    "reject_Amount": "1200000",
+    "remaining_Amount": "2500000",
+    "appointment_Date": "2025-02-05",
+    "invoice_Number": "1736251319025-zhvw303ug",
+    "signature": "101101"
+  },
+  {
+    "id": 5,
+    "customer_Name": "ဘယ်ကျော်",
+    "mobile_Number": "09675321546",
+    "address": "ပဲခူး",
+    "purchase_date": "2025-01-11",
+    "product_Details": {
+      "product_Type": "Product_6",
+      "product_Name": "စိန်လက်စွပ်",
+      "purity_16": "",
+      "purity_15": "",
+      "purity_14": "",
+      "purity_14_2": "4900000",
+      "weight": {
+        "row1": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row2": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row3": [
+          2,
+          1,
+          3,
+          1
+        ],
+        "row4": [
+          0,
+          3,
+          2,
+          0
+        ],
+        "row5": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row6": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "handWidth": "12",
+      "length": "",
+      "isOrder": true,
+      "isOrderTaken": false
+    },
+    "total_Amount": "3900000",
+    "reject_Amount": "1100000",
+    "remaining_Amount": "2800000",
+    "appointment_Date": "2025-01-16",
+    "invoice_Number": "1736251514141-8sga2w8wn",
+    "signature": "101101"
+  },
+  {
+    "id": 6,
+    "customer_Name": "Aung Aung",
+    "mobile_Number": "09876576212",
+    "address": "Hledan ",
+    "purchase_date": "2025-01-07",
+    "product_Details": {
+      "product_Type": "Product_5",
+      "product_Name": "Gold Ring",
+      "purity_16": "",
+      "purity_15": "5900000",
+      "purity_14": "",
+      "purity_14_2": "",
+      "weight": {
+        "row1": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row2": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row3": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "row4": [
+          0,
+          3,
+          0,
+          0
+        ],
+        "row5": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row6": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "handWidth": "10",
+      "length": "",
+      "isOrder": true,
+      "isOrderTaken": true
+    },
+    "total_Amount": "4500000",
+    "reject_Amount": "",
+    "remaining_Amount": "",
+    "appointment_Date": "2025-02-13",
+    "invoice_Number": "1736251754839-c8pimuk3o",
+    "signature": "101101"
+  },
+  {
+    "id": 7,
+    "customer_Name": "Ni Ni Aung",
+    "mobile_Number": "0987257823",
+    "address": "Yangon 9 miles",
+    "purchase_date": "2025-01-13",
+    "product_Details": {
+      "product_Type": "Product_4",
+      "product_Name": "Gold Ring",
+      "purity_16": "",
+      "purity_15": "5900000",
+      "purity_14": "",
+      "purity_14_2": "",
+      "weight": {
+        "row1": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row2": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row3": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "row4": [
+          0,
+          0,
+          3,
+          3
+        ],
+        "row5": [
+          0,
+          0,
+          3,
+          3
+        ],
+        "row6": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "handWidth": "",
+      "length": "",
+      "isOrder": false,
+      "isOrderTaken": false
+    },
+    "total_Amount": "200000",
+    "reject_Amount": "",
+    "remaining_Amount": "",
+    "appointment_Date": null,
+    "invoice_Number": "1736251920286-lyvi3vksq",
+    "signature": "101101"
+  }
+]

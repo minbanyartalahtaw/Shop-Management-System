@@ -50,6 +50,7 @@ export default function InvoicePage() {
       handWidth: "",
       length: "",
       isOrder: false,
+      isOrderTaken: false,
     },
     total_Amount: "",
     reject_Amount: "",

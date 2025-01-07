@@ -56,42 +56,38 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
   return (
     <ThemeProvider theme={theme}>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 200 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}>
         <Card
           sx={{
-            width: getWidth() > 1300 ? "50vw" : "50vw",
-
             mx: "auto",
-            my: 4,
+            my: 2,
             overflow: "hidden",
+            boxShadow: 8,
           }}>
           <Box
             sx={{
-              p: 3,
-              background: "#f44336",
-              color: "white",
+              p: 1,
+              background: data.product_Details.isOrder
+                ? data.product_Details.isOrder &&
+                  data.product_Details.isOrderTaken
+                  ? "#4caf50" // green color
+                  : "#f44336"
+                : theme.palette.primary.main,
+              color: "black",
               display: "flex",
               justifyContent: "space-between",
             }}>
             <Typography
-              variant="h4"
+              variant="body2"
               fontWeight="bold"
               sx={{
-                backgroundImage:
-                  "linear-gradient(to top,rgb(219, 219, 219),rgb(255, 255, 255))",
+                color: "grey.100",
                 WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
               }}>
               {data.invoice_Number.slice(14)}
             </Typography>
-            <Button
-              variant="outlined"
-              color="inherit"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              ပြင်ရန်
-            </Button>
           </Box>
 
           <CardContent>
@@ -100,7 +96,17 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                 <Typography variant="h5" gutterBottom>
                   {data.customer_Name}
                 </Typography>
-                <Typography variant="body2" gutterBottom color="primary">
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  sx={{
+                    color: data.product_Details.isOrder
+                      ? data.product_Details.isOrder &&
+                        data.product_Details.isOrderTaken
+                        ? "#4caf50" // green color
+                        : "#f44336"
+                      : theme.palette.primary.main,
+                  }}>
                   {data.purchase_date}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" gutterBottom>
@@ -170,15 +176,7 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                   </Box>
                   <Box display={"flex"}>
                     <Typography variant="body2" color={"error"}>
-                      ကျန်ငွေ -
-                      {formatCurrency(
-                        data.reject_Amount === "0"
-                          ? "0"
-                          : (
-                              Number(data.total_Amount) -
-                              Number(data.reject_Amount)
-                            ).toString()
-                      )}
+                      ကျန်ငွေ - {formatCurrency(data.remaining_Amount)}
                     </Typography>
                   </Box>
                 </Box>
@@ -186,17 +184,18 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                   Number(data.appointment_Date.length) > 0 && (
                     <Typography
                       mt={2}
-                      bgcolor={
-                        new Date(data.appointment_Date) < new Date()
-                          ? "green"
-                          : "red"
-                      }
                       variant="body2"
                       mb={1}
-                      style={{
+                      sx={{
+                        color: data.product_Details.isOrder
+                          ? data.product_Details.isOrder &&
+                            data.product_Details.isOrderTaken
+                            ? "#4caf50" // green color
+                            : "#f44336"
+                          : theme.palette.primary.main,
+
                         textAlign: "center",
                         padding: "5px",
-                        color: "white",
                         borderRadius: "5px",
                       }}>
                       <strong>ရက်ချိန်း - </strong> {data.appointment_Date}
@@ -260,7 +259,15 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
             <Button
               onClick={toggleExpand}
               startIcon={isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-              sx={{ mt: 2 }}>
+              sx={{
+                color: data.product_Details.isOrder
+                  ? data.product_Details.isOrder &&
+                    data.product_Details.isOrderTaken
+                    ? "#4caf50" // green color
+                    : "#f44336"
+                  : theme.palette.primary.main,
+                mt: 2,
+              }}>
               {isExpanded ? "ပိတ်ရန်" : "အသေးစိတ်ကြည့်ရန်"}
             </Button>
           </CardContent>
@@ -307,7 +314,15 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
               )}
 
               <Box>
-                <Typography color="primary">
+                <Typography
+                  sx={{
+                    color: data.product_Details.isOrder
+                      ? data.product_Details.isOrder &&
+                        data.product_Details.isOrderTaken
+                        ? "#4caf50" // green color
+                        : "#f44336"
+                      : theme.palette.primary.main,
+                  }}>
                   {formatCurrency(data.total_Amount)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">

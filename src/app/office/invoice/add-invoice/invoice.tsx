@@ -623,7 +623,15 @@ export default function Invoice() {
             </Grid>
           </Grid>
 
-          <Grid container spacing={1} mt={2}>
+          <Grid
+            container
+            spacing={1}
+            mt={2}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}>
             <Grid item xs={12} sm={3}>
               <FormControlLabel
                 control={

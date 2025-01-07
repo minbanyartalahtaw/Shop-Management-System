@@ -6,8 +6,18 @@ import { redirect } from "next/navigation";
 import { getInvoice } from "./action";
 import { useState } from "react";
 
+import { useEffect } from "react";
+
 export default function InvoicePage() {
   const [invoiceData, setInvoiceData] = useState<FormDataInterface[]>([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const data: FormDataInterface[] = await getInvoice();
+      setInvoiceData(data);
+    }
+    fetchData();
+  }, []);
   return (
     <Box position={"relative"}>
       <Box
@@ -39,13 +49,6 @@ export default function InvoicePage() {
       </Box>
 
       <Box mt={9}>
-        <form
-          action={async () => {
-            const data: FormDataInterface[] = await getInvoice();
-            setInvoiceData(data);
-          }}>
-          <Button type="submit">ဘော်ချာကြည့်ရန်နှိပ်ပါ</Button>
-        </form>
         <Grid container spacing={5}>
           {invoiceData
             .slice()

@@ -69,7 +69,12 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
           <Box
             sx={{
               p: 3,
-              background: "#f44336",
+              background: data.product_Details.isOrder
+                ? data.product_Details.isOrder &&
+                  data.product_Details.isOrderTaken
+                  ? "#4caf50" // green color
+                  : "#f44336"
+                : theme.palette.primary.main,
               color: "white",
               display: "flex",
               justifyContent: "space-between",
@@ -93,7 +98,17 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                 <Typography variant="h5" gutterBottom>
                   {data.customer_Name}
                 </Typography>
-                <Typography variant="body2" gutterBottom color="primary">
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  sx={{
+                    color: data.product_Details.isOrder
+                      ? data.product_Details.isOrder &&
+                        data.product_Details.isOrderTaken
+                        ? "#4caf50" // green color
+                        : "#f44336"
+                      : theme.palette.primary.main,
+                  }}>
                   {data.purchase_date}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" gutterBottom>
@@ -171,17 +186,18 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                   Number(data.appointment_Date.length) > 0 && (
                     <Typography
                       mt={2}
-                      bgcolor={
-                        new Date(data.appointment_Date) < new Date()
-                          ? "green"
-                          : "red"
-                      }
                       variant="body2"
                       mb={1}
-                      style={{
+                      sx={{
+                        color: data.product_Details.isOrder
+                          ? data.product_Details.isOrder &&
+                            data.product_Details.isOrderTaken
+                            ? "#4caf50" // green color
+                            : "#f44336"
+                          : theme.palette.primary.main,
+
                         textAlign: "center",
                         padding: "5px",
-                        color: "white",
                         borderRadius: "5px",
                       }}>
                       <strong>ရက်ချိန်း - </strong> {data.appointment_Date}
@@ -245,7 +261,15 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
             <Button
               onClick={toggleExpand}
               startIcon={isExpanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-              sx={{ mt: 2 }}>
+              sx={{
+                color: data.product_Details.isOrder
+                  ? data.product_Details.isOrder &&
+                    data.product_Details.isOrderTaken
+                    ? "#4caf50" // green color
+                    : "#f44336"
+                  : theme.palette.primary.main,
+                mt: 2,
+              }}>
               {isExpanded ? "ပိတ်ရန်" : "အသေးစိတ်ကြည့်ရန်"}
             </Button>
           </CardContent>
@@ -292,7 +316,15 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
               )}
 
               <Box>
-                <Typography color="primary">
+                <Typography
+                  sx={{
+                    color: data.product_Details.isOrder
+                      ? data.product_Details.isOrder &&
+                        data.product_Details.isOrderTaken
+                        ? "#4caf50" // green color
+                        : "#f44336"
+                      : theme.palette.primary.main,
+                  }}>
                   {formatCurrency(data.total_Amount)}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
