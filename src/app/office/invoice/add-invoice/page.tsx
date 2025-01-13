@@ -1,9 +1,9 @@
-"use client";
+"use server";
 
 import { Box } from "@mui/material";
 import Invoice from "./invoice";
 
-export default function CustomerPage() {
+export default async function CustomerPage() {
   return (
     <Box display={"flex"} alignItems={"center"} justifyContent={"center"}>
       <Invoice />

@@ -1,9 +1,9 @@
 "use server";
-import fs from "fs";
 import { FormDataInterface } from "@/app/form/form";
+import getClient from "@/app/libs/mongodb";
 
 const invoice_Data: FormDataInterface = {
-  id: 1,
+  id: 2,
   customer_Name: "",
   mobile_Number: "",
   address: "",
@@ -35,10 +35,16 @@ const invoice_Data: FormDataInterface = {
   invoice_Number: "",
   signature: "",
 };
-const invoice_Data_Array: FormDataInterface[] = [];
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function createInvoice(formData: any) {
+  // Get Mongo Client and DataBase
+  const client = await getClient();
+  const invoiceCollection = client.collection("invoice");
+  const count = await invoiceCollection.countDocuments({});
+
   // destructure the form data
+  const id = count + 1; // count from data base array
   const customer_Name = formData.get("customer_Name");
   const mobile_Number = formData.get("mobile_Number");
   const address = formData.get("address");
@@ -93,6 +99,7 @@ export async function createInvoice(formData: any) {
   const ရွှေ_ကျောက်_ချိန်_4 = formData.get("ရွှေ+ကျောက်-4");
 
   // set the form data to the invoice data
+  invoice_Data.id = id;
   invoice_Data.customer_Name = customer_Name;
   invoice_Data.mobile_Number = mobile_Number;
   invoice_Data.address = address;
@@ -144,30 +151,11 @@ export async function createInvoice(formData: any) {
   invoice_Data.product_Details.length = length;
   invoice_Data.total_Amount = total_Amount;
   invoice_Data.reject_Amount = reject_Amount;
-
   invoice_Data.remaining_Amount =
     Number(reject_Amount) === 0 ? "0" : remaining_Amount;
   invoice_Data.remaining_Amount = remaining_Amount;
-
   invoice_Data.appointment_Date = appointment_Date;
   invoice_Data.invoice_Number = invoice_Number;
   invoice_Data.signature = signature;
-  console.log(invoice_Data);
-  console.log("Is This order : " + isOrder);
-
-  const isExit = fs.existsSync("invoice.json");
-  if (isExit) {
-    const data = fs.readFileSync("invoice.json", "utf-8");
-    const invoice_Data_Array_FromJson = JSON.parse(data);
-    const length = invoice_Data_Array_FromJson.length;
-    invoice_Data.id = length + 1;
-    invoice_Data_Array_FromJson.push(invoice_Data);
-    fs.writeFileSync(
-      "invoice.json",
-      JSON.stringify(invoice_Data_Array_FromJson)
-    );
-  } else {
-    invoice_Data_Array.push(invoice_Data);
-    fs.writeFileSync("invoice.json", JSON.stringify(invoice_Data_Array));
-  }
+  await invoiceCollection.insertOne(invoice_Data);
 }

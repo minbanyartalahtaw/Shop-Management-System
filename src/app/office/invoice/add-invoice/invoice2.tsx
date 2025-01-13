@@ -22,11 +22,6 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { FormDataInterface } from "@/app/form/form";
 
-const getWidth = () =>
-  window.innerWidth ||
-  document.documentElement.clientWidth ||
-  document.body.clientWidth;
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -37,7 +32,8 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontSize: getWidth() > 1300 ? 15 : 12,
+    // fontSize: getWidth() > 1300 ? 15 : 12,
+    fontSize: 12,
   },
 });
 

@@ -16,10 +16,11 @@ import {
 } from "@mui/material";
 import { FormDataInterface } from "@/app/form/form";
 import InvoiceCard from "./invoice2";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createInvoice } from "./action";
 
 export default function Invoice() {
+  const [isClient, setIsClient] = useState(false);
   const defaultForm: FormDataInterface = {
     id: 0,
     customer_Name: "",
@@ -65,9 +66,14 @@ export default function Invoice() {
     "Product_9",
     "Product_10",
   ];
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   const [formData, setFormData] = React.useState(defaultForm);
   const id = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   formData.invoice_Number = id;
+
   const checkInvoice = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     setTimeout(() => {
@@ -75,6 +81,7 @@ export default function Invoice() {
       setFormData(defaultForm);
     }, 1000);
   };
+  if (!isClient) return null;
   return (
     <Box
       component={"form"}
