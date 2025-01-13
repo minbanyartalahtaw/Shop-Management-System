@@ -16,7 +16,6 @@ export async function getOrderInvoice(): Promise<FormDataInterface[]> {
     return [];
   }
 }
-
 export async function takeOrder(
   invoiceNumber: string,
   isOrder: boolean,

@@ -305,11 +305,11 @@
       "handWidth": "12",
       "length": "",
       "isOrder": true,
-      "isOrderTaken": false
+      "isOrderTaken": true
     },
     "total_Amount": "3900000",
-    "reject_Amount": "1100000",
-    "remaining_Amount": "2800000",
+    "reject_Amount": "",
+    "remaining_Amount": "",
     "appointment_Date": "2025-01-16",
     "invoice_Number": "1736251514141-8sga2w8wn",
     "signature": "101101"
@@ -438,6 +438,132 @@
     "remaining_Amount": "",
     "appointment_Date": null,
     "invoice_Number": "1736251920286-lyvi3vksq",
+    "signature": "101101"
+  },
+  {
+    "id": 8,
+    "customer_Name": "Htet Myat Twin",
+    "mobile_Number": "098776782734",
+    "address": "Hledan Yangon",
+    "purchase_date": "2025-01-08",
+    "product_Details": {
+      "product_Type": "Product_10",
+      "product_Name": "Gold Ring",
+      "purity_16": "",
+      "purity_15": "5900000",
+      "purity_14": "",
+      "purity_14_2": "",
+      "weight": {
+        "row1": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row2": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row3": [
+          2,
+          1,
+          3,
+          1
+        ],
+        "row4": [
+          0,
+          2,
+          3,
+          0
+        ],
+        "row5": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row6": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "handWidth": "18",
+      "length": "",
+      "isOrder": true,
+      "isOrderTaken": false
+    },
+    "total_Amount": "600000",
+    "reject_Amount": "200000",
+    "remaining_Amount": "400000",
+    "appointment_Date": "2025-01-31",
+    "invoice_Number": "1736270545675-hbn145vsr",
+    "signature": "101101"
+  },
+  {
+    "id": 9,
+    "customer_Name": "Mg Pyae",
+    "mobile_Number": "0987654321",
+    "address": "LA",
+    "purchase_date": "2025-01-09",
+    "product_Details": {
+      "product_Type": "Product_4",
+      "product_Name": "Gold Ring",
+      "purity_16": "",
+      "purity_15": "5900000",
+      "purity_14": "",
+      "purity_14_2": "",
+      "weight": {
+        "row1": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row2": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row3": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "row4": [
+          0,
+          3,
+          3,
+          0
+        ],
+        "row5": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "row6": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "handWidth": "10",
+      "length": "12",
+      "isOrder": true,
+      "isOrderTaken": true
+    },
+    "total_Amount": "500000",
+    "reject_Amount": "",
+    "remaining_Amount": "",
+    "appointment_Date": "2025-02-13",
+    "invoice_Number": "1736417921368-xf5cabok5",
     "signature": "101101"
   }
 ]

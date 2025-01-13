@@ -1,3 +1,4 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import {
   Drawer,
@@ -40,12 +41,14 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ open, onClose, onOpen }) => {
+  const [mounted, setMounted] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.down("md"));
   const router = useRouter();
 
   useEffect(() => {
+    setMounted(true);
     const timer = setInterval(() => {
       const now = new Date();
       setCurrentTime(now);
@@ -54,13 +57,38 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose, onOpen }) => {
     return () => clearInterval(timer);
   }, []);
 
+  const timeDisplay = mounted ? (
+    <>
+      <Typography
+        variant="h6"
+        sx={{
+          fontFamily: "monospace",
+          color: "#333",
+          fontSize: "1.1rem",
+          textAlign: "center",
+        }}>
+        {currentTime.toLocaleTimeString()}
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{
+          fontFamily: "monospace",
+          color: "#666",
+          textAlign: "center",
+          fontSize: "0.8rem",
+        }}>
+        {currentTime.toLocaleDateString()}
+      </Typography>
+    </>
+  ) : null;
+
   const menuItems = [
+    { text: "စရင်းများ", icon: <DashboardIcon />, path: "/office/" },
     {
       text: "ဘောက်ချာမှတ်ရန်",
       icon: <InvoiceIcon />,
       path: "/office/invoice/add-invoice",
     },
-    { text: "စရင်းများ", icon: <DashboardIcon />, path: "/office/dashboard" },
     { text: "အော်ဒါ", icon: <OrderIcon />, path: "/office/order" },
     { text: "ဝယ်သူများ", icon: <CustomerIcon />, path: "/office/customer" },
     {
@@ -104,26 +132,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open, onClose, onOpen }) => {
                 transform: "translateY(-1px)",
               },
             }}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontFamily: "monospace",
-                color: "#333",
-                fontSize: "1.1rem",
-                textAlign: "center",
-              }}>
-              {currentTime.toLocaleTimeString()}
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                fontFamily: "monospace",
-                color: "#666",
-                textAlign: "center",
-                fontSize: "0.8rem",
-              }}>
-              {currentTime.toLocaleDateString()}
-            </Typography>
+            {timeDisplay}
           </Box>
         </Box>
       </Box>

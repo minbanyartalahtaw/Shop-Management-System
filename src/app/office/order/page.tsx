@@ -9,17 +9,17 @@ import ScreenRotationIcon from "@mui/icons-material/ScreenRotation";
 
 export default function OrderPage() {
   const [orders, setOrders] = useState<FormDataInterface[]>([]);
+  const fetchOrders = async () => {
+    try {
+      const orderData = await getOrderInvoice();
+      setOrders(orderData);
+    } catch (error) {
+      console.error("Error fetching orders:", error);
+      setOrders([]);
+    }
+  };
 
   useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const orderData = await getOrderInvoice();
-        setOrders(orderData);
-      } catch (error) {
-        console.error("Error fetching orders:", error);
-        setOrders([]);
-      }
-    };
     fetchOrders();
   }, []);
 
