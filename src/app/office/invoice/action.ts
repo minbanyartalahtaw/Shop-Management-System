@@ -1,7 +1,11 @@
 "use server";
-import fs from "fs";
+
+import getClient from "@/app/libs/mongodb";
+
 export async function getInvoice() {
-  const data = fs.readFileSync("invoice.json", "utf-8");
-  const invoiceDataArray = JSON.parse(data);
-  return invoiceDataArray;
+  const client = await getClient();
+  const invoiceCollection = client.collection("invoice");
+  const data = await invoiceCollection.find({}).toArray();
+  const invoiceData = JSON.parse(JSON.stringify(data));
+  return invoiceData;
 }

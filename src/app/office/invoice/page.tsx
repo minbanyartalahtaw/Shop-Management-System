@@ -18,6 +18,8 @@ export default function InvoicePage() {
     }
     fetchData();
   }, []);
+
+  if (!invoiceData) return null;
   return (
     <Box position={"relative"}>
       <Box

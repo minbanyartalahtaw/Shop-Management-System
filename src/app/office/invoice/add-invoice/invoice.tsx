@@ -21,6 +21,22 @@ import { createInvoice } from "./action";
 
 export default function Invoice() {
   const [isClient, setIsClient] = useState(false);
+  {
+    /* Generate Random ID */
+  }
+  const generateRandomString = (length: number) => {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    const charactersLength = characters.length;
+
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+  };
+
   const defaultForm: FormDataInterface = {
     id: 0,
     customer_Name: "",
@@ -71,7 +87,7 @@ export default function Invoice() {
     setIsClient(true);
   }, []);
   const [formData, setFormData] = React.useState(defaultForm);
-  const id = `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  const id = generateRandomString(10);
   formData.invoice_Number = id;
 
   const checkInvoice = () => {

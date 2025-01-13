@@ -22,11 +22,6 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { FormDataInterface } from "@/app/form/form";
 
-const getWidth = () =>
-  window.innerWidth ||
-  document.documentElement.clientWidth ||
-  document.body.clientWidth;
-
 const theme = createTheme({
   palette: {
     primary: {
@@ -37,7 +32,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontSize: getWidth() > 1300 ? 15 : 12,
+    fontSize: 13,
   },
 });
 
@@ -64,7 +59,6 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
             mx: "auto",
             my: 2,
             overflow: "hidden",
-            boxShadow: 8,
           }}>
           <Box
             sx={{
@@ -86,7 +80,7 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                 color: "grey.100",
                 WebkitBackgroundClip: "text",
               }}>
-              {data.invoice_Number.slice(14)}
+              {data.invoice_Number}
             </Typography>
           </Box>
 

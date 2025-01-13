@@ -33,7 +33,7 @@ const theme = createTheme({
   },
   typography: {
     // fontSize: getWidth() > 1300 ? 15 : 12,
-    fontSize: 12,
+    fontSize: 13,
   },
 });
 
@@ -57,10 +57,18 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
         transition={{ duration: 0.5 }}>
         <Card
           sx={{
+            width: {
+              xs: 300,
+              sm: 400,
+              md: 500,
+              lg: 600,
+              xl: 700,
+            },
             mx: "auto",
             my: 2,
             overflow: "hidden",
-            boxShadow: 8,
+            // boxShadow: 8,
+            borderRadius: 1,
           }}>
           <Box
             sx={{
@@ -82,8 +90,17 @@ const InvoiceCard: React.FC<{ data: FormDataInterface }> = ({ data }) => {
                 color: "grey.100",
                 WebkitBackgroundClip: "text",
               }}>
-              {data.invoice_Number.slice(14)}
+              {data.invoice_Number}
             </Typography>
+            <Button
+              variant="outlined"
+              color="inherit"
+              sx={{ color: "white" }}
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}>
+              ပြင်ရန်
+            </Button>
           </Box>
 
           <CardContent>
